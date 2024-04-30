@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>PicSort</title>
+  </head>
+
+  <body>
+    <div id="setup" class="hidden">
+      <h1>PicSort</h1>
+      <div id="setup-boxes">
+        <div class="setup-box" id="setup-directories">
+          <h2>Directories</h2>
+          <div class="setup-inner">
+            <p class="hint">Files will be moved from the source to category-named subdirectories of the destination.</p>
+            <div class="form-row">
+              <label for="source">Source:</label>
+              <div class="form-control-dual">
+                <input id="source" /> <button id="source-btn" class="form-button">Browse…</button>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="destination">Destination:</label>
+              <div class="form-control-dual">
+                <input id="destination" /> <button id="destination-btn" class="form-button">Browse…</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-box" id="setup-options">
+          <h2>Options</h2>
+          <div class="setup-inner">
+            <label class="checkbox" for="images"> <input type="checkbox" id="images" checked /> Include images</label>
+            <label class="checkbox" for="videos"> <input type="checkbox" id="videos" checked /> Include videos</label>
+            <label class="checkbox" for="autoplay"
+              ><input type="checkbox" id="autoplay" checked /> Autoplay videos</label
+            >
+            <label class="checkbox" for="loop"> <input type="checkbox" id="loop" /> Loop videos</label>
+            <label class="checkbox" for="muted"> <input type="checkbox" id="muted" /> Videos start muted</label>
+          </div>
+        </div>
+
+        <div class="setup-box" id="setup-categories">
+          <h2>Categories</h2>
+          <div class="setup-category-templates">
+            <span class="small-hint">Templates:</span>
+            <button class="category-template" data-template="goodbad">good/bad</button>
+            <button class="category-template" data-template="images">person/landscape/landmark/trash</button>
+            <button class="category-template" data-template="clear">clear</button>
+          </div>
+          <table id="category-table">
+            <thead>
+              <tr>
+                <th class="category-name-column">Name</th>
+                <th class="category-key-column">Key</th>
+                <th class="category-color-column">Color</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="start-btn-box">
+        <div id="setup-errors"></div>
+        <button id="start-btn" class="form-button">Start!</button>
+      </div>
+    </div>
+
+    <div id="sorter" class="hidden">
+      <header>
+        <h1>PicSort</h1>
+        <div id="filename"></div>
+        <div id="header-buttons">
+          <button class="form-button form-button-small" id="sorter-setup-btn">Setup</button>
+        </div>
+      </header>
+      <main>
+        <div id="overlay-wait">⌛</div>
+        <div class="content" id="content-image"></div>
+        <div class="content" id="content-video"></div>
+        <div class="placeholder" id="placeholder-blank"></div>
+        <div class="placeholder" id="placeholder-wait">
+          <div class="placeholder-icon">⌛</div>
+          <h2>Please wait…</h2>
+        </div>
+        <div class="placeholder" id="placeholder-error">
+          <div class="placeholder-icon">🚫</div>
+          <h2>Something went wrong</h2>
+          <p></p>
+        </div>
+        <div class="placeholder" id="placeholder-done">
+          <div class="placeholder-icon">✅</div>
+          <h2>Done!</h2>
+          <p>No more files found (or the files don’t match your filters).</p>
+        </div>
+      </main>
+
+      <footer>
+        <button class="category-tool-button" id="undo" title="Undo (Ctrl+Z)">Undo</button
+        ><button class="category-tool-button" id="skip" title="Skip (Ctrl+K)">Skip</button>
+      </footer>
+    </div>
+  </body>
+</html>
